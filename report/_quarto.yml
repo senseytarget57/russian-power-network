@@ -1,0 +1,16 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "Сетевая модель российской власти"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Главная
+
+format:
+  html:
+    toc: true
+    theme: cosmo
+    code-fold: false

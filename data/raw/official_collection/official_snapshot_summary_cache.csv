@@ -1,0 +1,13 @@
+provider,entity_group,count
+council,institution,1
+council,person,1
+council,position,1
+duma,institution,1
+duma,person,1
+duma,position,1
+government,person,1
+government,position,1
+kremlin,institution,2
+kremlin,person,2
+kremlin,position,2
+other_official,institution,1

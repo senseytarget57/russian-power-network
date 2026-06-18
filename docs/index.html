@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Арсений" />
-  <meta name="dcterms.date" content="2026-06-18" />
+  <meta name="dcterms.date" content="2026-06-19" />
   <title>�������������� ������������ �������������������� ������������</title>
   <style>
     code{white-space: pre-wrap;}
@@ -88,7 +88,7 @@
     code span.vs { color: #4070a0; } /* VerbatimString */
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../report/styles.css" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 <header id="title-block-header">
@@ -97,470 +97,237 @@
 <p class="subtitle">Формальные институты, кадровые связи и аналитические
 слои влияния</p>
 <p class="author">Арсений</p>
-<p class="date">2026-06-18</p>
+<p class="date">2026-06-19</p>
 </header>
-<nav id="TOC" role="doc-toc">
+<div class="hero">
+<div class="hero-copy">
+<pre><code>&lt;div class=&quot;eyebrow&quot;&gt;Digital Humanities · Python · Network Analysis&lt;/div&gt;
+&lt;h1&gt;Сетевая модель российской власти&lt;/h1&gt;
+&lt;p class=&quot;hero-lead&quot;&gt;Проект сравнивает &lt;strong&gt;формальную архитектуру власти&lt;/strong&gt; с &lt;strong&gt;многослойной сетью кадровых, координационных и аналитически реконструированных связей&lt;/strong&gt;. Исходные Kumu-таблицы здесь превращены в воспроизводимый Python-пайплайн: данные загружаются, нормализуются, частично дополняются автоматизированным сбором с официальных сайтов, а затем анализируются и визуализируются кодом.&lt;/p&gt;
+&lt;div class=&quot;hero-actions&quot;&gt;
+  &lt;a class=&quot;button-primary&quot; href=&quot;https://github.com/senseytarget57/russian-power-network&quot;&gt;GitHub-репозиторий&lt;/a&gt;
+  &lt;a class=&quot;button-secondary&quot; href=&quot;#results&quot;&gt;К результатам&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class=&quot;chip-row&quot;&gt;
+  &lt;span class=&quot;chip&quot;&gt;522 узла&lt;/span&gt;
+  &lt;span class=&quot;chip&quot;&gt;1920 связей&lt;/span&gt;
+  &lt;span class=&quot;chip&quot;&gt;4 слоя данных&lt;/span&gt;
+  &lt;span class=&quot;chip&quot;&gt;Python + NetworkX + Quarto&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+</div>
+</div>
+<div class="stat-grid">
+<div class="stat-card">
+<pre><code>&lt;div class=&quot;stat-label&quot;&gt;Исследовательский вопрос&lt;/div&gt;
+&lt;div class=&quot;stat-text&quot;&gt;Насколько формальная структура российской власти совпадает с сетевой структурой кадровых, координационных и аналитически реконструируемых связей?&lt;/div&gt;</code></pre>
+</div>
+<div class="stat-card">
+<pre><code>&lt;div class=&quot;stat-label&quot;&gt;Методы&lt;/div&gt;
+&lt;div class=&quot;stat-text&quot;&gt;Автоматизированный сбор официальных данных, сетевой анализ и сравнительный анализ многослойной сети.&lt;/div&gt;</code></pre>
+</div>
+<div class="stat-card">
+<pre><code>&lt;div class=&quot;stat-label&quot;&gt;Новизна&lt;/div&gt;
+&lt;div class=&quot;stat-text&quot;&gt;Проект объединяет formal core, overlay, comention и официальный snapshot в одну воспроизводимую структуру анализа.&lt;/div&gt;</code></pre>
+</div>
+</div>
+<h2 id="question">Исследовательский вопрос</h2>
+<section id="что-именно-проверяет-проект" class="callout-important">
+<h3>Что именно проверяет проект</h3>
+<p>Совпадает ли формальная институциональная карта российской власти с
+сетевой структурой кадровых назначений, координационных контуров и
+аналитически реконструированных связей, или же разные слои данных
+показывают разные логики связанности?</p>
+</section>
+<h2 id="предыдущие-исследования">Предыдущие исследования</h2>
+<p>Проект опирается на две группы работ.</p>
+<p>Во-первых, это исследования о <strong>неформальном управлении,
+патронализме и российской элите</strong>: Алена Леденёва, Генри Хейл,
+Владимир Гельман, Ольга Крыштановская, Оксана Гаман-Голутвина. Они
+задают язык для разговора о патрональных сетях, встроенных акторах,
+карьерных траекториях и соотношении формальных и неформальных
+институтов.</p>
+<p>Во-вторых, это исследования, где <strong>SNA используется
+напрямую</strong> для анализа российской власти и элит:</p>
 <ul>
-<li><a href="#аннотация" id="toc-аннотация">Аннотация</a></li>
-<li><a href="#исследовательский-вопрос"
-id="toc-исследовательский-вопрос">Исследовательский вопрос</a>
-<ul>
-<li><a href="#задачи" id="toc-задачи">Задачи</a></li>
-</ul></li>
-<li><a href="#данные" id="toc-данные">Данные</a>
-<ul>
-<li><a href="#сводка-корпуса" id="toc-сводка-корпуса">Сводка корпуса</a>
-<ul>
-<li><a href="#размер-слоев" id="toc-размер-слоев">Размер слоев</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#автоматизированный-сбор-данных"
-id="toc-автоматизированный-сбор-данных">Автоматизированный сбор
-данных</a>
-<ul>
-<li><a href="#что-собрано-автоматически"
-id="toc-что-собрано-автоматически">Что собрано автоматически</a></li>
-</ul></li>
-<li><a href="#методика" id="toc-методика">Методика</a>
-<ul>
-<li><a href="#использованные-цифровые-методы"
-id="toc-использованные-цифровые-методы">Использованные цифровые
-методы</a></li>
-<li><a href="#технический-пайплайн"
-id="toc-технический-пайплайн">Технический пайплайн</a></li>
-</ul></li>
-<li><a href="#результаты" id="toc-результаты">Результаты</a>
-<ul>
-<li><a href="#типы-связей-по-слоям" id="toc-типы-связей-по-слоям">Типы
-связей по слоям</a>
-<ul>
-<li><a href="#формальные-связи-в-core"
-id="toc-формальные-связи-в-core">Формальные связи в core</a></li>
-</ul></li>
-<li><a href="#центральные-узлы-formal-core"
-id="toc-центральные-узлы-formal-core">Центральные узлы formal core</a>
-<ul>
-<li><a href="#топ-узлов-по-centrality"
-id="toc-топ-узлов-по-centrality">Топ узлов по centrality</a></li>
-</ul></li>
-<li><a href="#подграф-formal-core" id="toc-подграф-formal-core">Подграф
-formal core</a></li>
-</ul></li>
-<li><a href="#интерпретация" id="toc-интерпретация">Интерпретация</a>
-<ul>
-<li><a href="#основные-выводы" id="toc-основные-выводы">Основные
-выводы</a></li>
-</ul></li>
-<li><a href="#ограничения" id="toc-ограничения">Ограничения</a></li>
-<li><a href="#воспроизводимость"
-id="toc-воспроизводимость">Воспроизводимость</a>
-<ul>
-<li><a href="#структура-репозитория"
-id="toc-структура-репозитория">Структура репозитория</a></li>
-<li><a href="#запуск" id="toc-запуск">Запуск</a></li>
-</ul></li>
-<li><a href="#заключение" id="toc-заключение">Заключение</a></li>
+<li>Е. А. Иванов, К. В. Мельников — <em>Неформальная структура элитного
+пространства России (опыт сетевого анализа)</em>;</li>
+<li>К. В. Мельников — <em>Клиентелизм и неформальные сети региональных
+элит в России: опыт сетевого анализа на примере Свердловской
+области</em>;</li>
+<li>K. Melnikov — <em>Informal Networks of Regional Elites in Russia: A
+Cross-Temporal Perspective</em>;</li>
+<li>Ю. О. Гайворонский, Ю. А. Баландин — работы о патрональных сетях и
+рекрутировании губернаторского корпуса;</li>
+<li>методологические работы по SNA: John Scott, David Knoke, Peter
+Marsden.</li>
 </ul>
-</nav>
-<h1 id="аннотация">Аннотация</h1>
-<p>Этот проект переводит исходный корпус данных, первоначально
-организованный в Kumu-совместимых CSV, в воспроизводимый
-Python-пайплайн. Итоговый результат строится <strong>не в Kumu</strong>,
-а собственным кодом: данные загружаются, нормализуются, частично
-дополняются автоматизированным сбором с официальных сайтов, после чего
-на их основе строятся графы, считаются сетевые метрики и создаются
-визуализации.</p>
-<h1 id="исследовательский-вопрос">Исследовательский вопрос</h1>
-<p><strong>Насколько формальная структура российской власти совпадает с
-сетевой структурой кадровых, координационных и аналитически
-реконструируемых связей?</strong></p>
-<h2 id="задачи">Задачи</h2>
-<ol type="1">
-<li>Собрать и объединить формальный и аналитический слои данных о
-российской власти.</li>
-<li>Построить формальный институциональный граф и сравнить его с
-дополнительными слоями сети.</li>
-<li>Вычислить базовые сетевые метрики центральности для formal
-core.</li>
-<li>Визуализировать различия между слоями и показать ограничения такого
-моделирования.</li>
-</ol>
-<h1 id="данные">Данные</h1>
-<p>Проект использует четыре слоя данных:</p>
-<ul>
-<li><strong>official</strong> — формальный институциональный слой,
-собираемый кодом с официальных сайтов;</li>
-<li><strong>core</strong> — формальный институциональный каркас
-исследовательской базы;</li>
-<li><strong>overlay</strong> — аналитический слой на основе
-политологических исследований;</li>
-<li><strong>comention</strong> — слой соупоминаний, фиксирующий
-дополнительную связанность акторов.</li>
-</ul>
-<p>Изначальные Kumu-таблицы используются только как <strong>сырой формат
-хранения части данных</strong>. Финальный анализ, очистка, объединение,
-расчёт метрик и визуализация выполняются Python-кодом.</p>
-<h2 id="сводка-корпуса">Сводка корпуса</h2>
-<ul>
-<li>Всего узлов: <strong>522</strong></li>
-<li>Всего связей: <strong>1920</strong></li>
-<li>Узлов в слое <code>core</code>: <strong>282</strong></li>
-<li>Узлов в слое <code>overlay</code>: <strong>130</strong></li>
-<li>Узлов в слое <code>comention</code>: <strong>110</strong></li>
-<li>Связей в слое <code>core</code>: <strong>448</strong></li>
-<li>Связей в слое <code>overlay</code>: <strong>50</strong></li>
-<li>Связей в слое <code>comention</code>: <strong>1422</strong></li>
-</ul>
-<h3 id="размер-слоев">Размер слоев</h3>
-<table>
-<thead>
-<tr class="header">
-<th>layer</th>
-<th>edges</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>comention</td>
-<td>1422</td>
-</tr>
-<tr class="even">
-<td>core</td>
-<td>448</td>
-</tr>
-<tr class="odd">
-<td>overlay</td>
-<td>50</td>
-</tr>
-</tbody>
-</table>
-<h1 id="автоматизированный-сбор-данных">Автоматизированный сбор
-данных</h1>
-<p>В проект включён отдельный модуль
-<code>src/scrape_official.py</code>, который пытается автоматически
-собрать часть формального институционального слоя с официальных сайтов.
-На текущем этапе он ориентирован на страницы:</p>
+<p>Для моего проекта эти исследования важны в двух смыслах: они дают
+<strong>теоретические основания</strong> для выделения узлов и типов
+связей и одновременно предлагают <strong>методические ориентиры</strong>
+для операционализации сети власти.</p>
+<h2 id="данные">Данные</h2>
+<div class="layer-grid">
+<div class="layer-card">
+<pre><code>&lt;h3&gt;official&lt;/h3&gt;
+&lt;p&gt;Формальный институциональный слой, который частично собирается кодом с официальных сайтов и сохраняется как воспроизводимый snapshot.&lt;/p&gt;</code></pre>
+</div>
+<div class="layer-card">
+<pre><code>&lt;h3&gt;core&lt;/h3&gt;
+&lt;p&gt;Основной формальный каркас исследовательской базы: институты, должности и формальные связи.&lt;/p&gt;</code></pre>
+</div>
+<div class="layer-card">
+<pre><code>&lt;h3&gt;overlay&lt;/h3&gt;
+&lt;p&gt;Аналитический слой, собранный по политологическим исследованиям о сетевых структурах и неформальных отношениях.&lt;/p&gt;</code></pre>
+</div>
+<div class="layer-card">
+<pre><code>&lt;h3&gt;comention&lt;/h3&gt;
+&lt;p&gt;Слой соупоминаний, который фиксирует дополнительную связанность акторов в источниках и расширяет сетевую плотность корпуса.&lt;/p&gt;</code></pre>
+</div>
+</div>
+<h3 id="ключевые-параметры-корпуса">Ключевые параметры корпуса</h3>
+<div class="metric-grid">
+<div class="metric-card">
+<span class="metric-value">522</span><span class="metric-label">всего
+узлов</span>
+</div>
+<div class="metric-card">
+<span class="metric-value">1920</span><span class="metric-label">всего
+связей</span>
+</div>
+<div class="metric-card">
+<span class="metric-value">282</span><span class="metric-label">узлов в
+core</span>
+</div>
+<div class="metric-card">
+<span class="metric-value">448</span><span class="metric-label">связей в
+core</span>
+</div>
+<div class="metric-card">
+<span class="metric-value">110</span><span class="metric-label">узлов в
+comention</span>
+</div>
+<div class="metric-card">
+<span class="metric-value">1422</span><span class="metric-label">связей
+в comention</span>
+</div>
+</div>
+<h2 id="автоматизированный-сбор-данных">Автоматизированный сбор
+данных</h2>
+<p>Изначальная версия проекта строилась на Kumu-совместимых таблицах, но
+итоговый вариант переведён в Python-пайплайн. Отдельный модуль
+<code>src/scrape_official.py</code> собирает часть формального
+институционального слоя с официальных сайтов:</p>
 <ul>
 <li>Кремля;</li>
 <li>Правительства РФ;</li>
 <li>Государственной Думы;</li>
 <li>Совета Федерации.</li>
 </ul>
-<p>Для воспроизводимости в офлайн-среде в репозитории хранится
-кэшированный snapshot официального слоя. Это означает, что даже без
-доступа к сети можно воспроизвести структуру проекта и показать
-отдельный этап <strong>автоматизированного сбора данных</strong>.</p>
-<figure>
-<img src="../outputs/figures/official_collection_counts.png"
-alt="Результаты автоматизированного сбора официальных данных" />
-<figcaption aria-hidden="true">Результаты автоматизированного сбора
-официальных данных</figcaption>
-</figure>
-<h3 id="что-собрано-автоматически">Что собрано автоматически</h3>
-<table>
-<thead>
-<tr class="header">
-<th>provider</th>
-<th>entity_group</th>
-<th>count</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>council</td>
-<td>institution</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td>council</td>
-<td>person</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td>council</td>
-<td>position</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td>duma</td>
-<td>institution</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td>duma</td>
-<td>person</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td>duma</td>
-<td>position</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td>government</td>
-<td>person</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td>government</td>
-<td>position</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td>kremlin</td>
-<td>institution</td>
-<td>2</td>
-</tr>
-<tr class="even">
-<td>kremlin</td>
-<td>person</td>
-<td>2</td>
-</tr>
-<tr class="odd">
-<td>kremlin</td>
-<td>position</td>
-<td>2</td>
-</tr>
-<tr class="even">
-<td>other_official</td>
-<td>institution</td>
-<td>1</td>
-</tr>
-</tbody>
-</table>
-<h1 id="методика">Методика</h1>
-<h2 id="использованные-цифровые-методы">Использованные цифровые
-методы</h2>
-<ol type="1">
-<li><strong>Автоматизированный сбор и структурирование официальных
-данных</strong> с официальных сайтов государственных институтов.</li>
-<li><strong>Сетевой анализ</strong> формального институционального графа
-(<code>networkx</code>): degree centrality, betweenness centrality,
-closeness centrality.</li>
-<li><strong>Сравнительный анализ многослойной сети</strong>:
-сопоставление <code>official</code>, <code>core</code>,
-<code>overlay</code> и <code>comention</code> по размеру, типам связей и
-плотности.</li>
-</ol>
-<h2 id="технический-пайплайн">Технический пайплайн</h2>
-<ol type="1">
-<li>Загрузка сырых CSV из <code>data/raw/</code>.</li>
-<li>Нормализация и объединение узлов и связей в
-<code>data/processed/</code>.</li>
-<li>Построение formal core графа по основным формальным связям.</li>
-<li>Расчёт центральностей и генерация таблиц результатов.</li>
-<li>Построение статических визуализаций Python-кодом.</li>
-</ol>
-<h1 id="результаты">Результаты</h1>
-<h2 id="типы-связей-по-слоям">Типы связей по слоям</h2>
-<figure>
-<img src="../outputs/figures/relations_by_layer.png"
-alt="Типы связей по слоям" />
-<figcaption aria-hidden="true">Типы связей по слоям</figcaption>
-</figure>
-<p>Диаграмма показывает, что разные слои описывают разные типы
-связанности. Слой <code>core</code> отвечает за формальный каркас,
-<code>overlay</code> — за аналитически реконструированные связи, а
-<code>comention</code> — за плотность совместной видимости акторов в
-источниках.</p>
-<h3 id="формальные-связи-в-core">Формальные связи в core</h3>
-<table>
-<thead>
-<tr class="header">
-<th>type</th>
-<th>count</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>contains</td>
-<td>126</td>
-</tr>
-<tr class="even">
-<td>занимает_должность</td>
-<td>102</td>
-</tr>
-<tr class="odd">
-<td>контроль_надзор</td>
-<td>7</td>
-</tr>
-<tr class="even">
-<td>координация</td>
-<td>8</td>
-</tr>
-<tr class="odd">
-<td>назначение</td>
-<td>118</td>
-</tr>
-<tr class="even">
-<td>неформальное_отношение</td>
-<td>12</td>
-</tr>
-<tr class="odd">
-<td>подчинение</td>
-<td>75</td>
-</tr>
-</tbody>
-</table>
-<h2 id="центральные-узлы-formal-core">Центральные узлы formal core</h2>
-<figure>
-<img src="../outputs/figures/top15_core_degree.png"
-alt="Топ-15 узлов по degree centrality в formal core" />
-<figcaption aria-hidden="true">Топ-15 узлов по degree centrality в
-formal core</figcaption>
-</figure>
-<p>Наиболее центральным узлом formal core выступает <strong>институт
-президента</strong>, что соответствует общей логике формального
-институционального каркаса. Далее идут узлы правительства и
-парламентских институтов.</p>
-<h3 id="топ-узлов-по-centrality">Топ узлов по centrality</h3>
-<table style="width:100%;">
-<colgroup>
-<col style="width: 16%" />
-<col style="width: 16%" />
-<col style="width: 16%" />
-<col style="width: 16%" />
-<col style="width: 16%" />
-<col style="width: 16%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>узел</th>
-<th>тип</th>
-<th>degree</th>
-<th>degree_centrality</th>
-<th>betweenness</th>
-<th>closeness</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Институт Президента Российской Федерации</td>
-<td>organization</td>
-<td>65</td>
-<td>0.2313</td>
-<td>0.2380</td>
-<td>0.3286</td>
-</tr>
-<tr class="even">
-<td>Председатель Правительства Российской Федерации</td>
-<td>position</td>
-<td>27</td>
-<td>0.0961</td>
-<td>0.0142</td>
-<td>0.2352</td>
-</tr>
-<tr class="odd">
-<td>Государственная Дума Федерального Собрания Российской Федерации</td>
-<td>organization</td>
-<td>24</td>
-<td>0.0854</td>
-<td>0.0090</td>
-<td>0.1809</td>
-</tr>
-<tr class="even">
-<td>Правительство Российской Федерации</td>
-<td>organization</td>
-<td>19</td>
-<td>0.0676</td>
-<td>0.0628</td>
-<td>0.2249</td>
-</tr>
-<tr class="odd">
-<td>Совет Федерации Федерального Собрания Российской Федерации</td>
-<td>organization</td>
-<td>12</td>
-<td>0.0427</td>
-<td>0.0036</td>
-<td>0.1626</td>
-</tr>
-<tr class="even">
-<td>Федеральная служба безопасности Российской Федерации</td>
-<td>organization</td>
-<td>7</td>
-<td>0.0249</td>
-<td>0.0219</td>
-<td>0.2090</td>
-</tr>
-<tr class="odd">
-<td>Заместитель Председателя Правительства Российской Федерации</td>
-<td>position</td>
-<td>4</td>
-<td>0.0142</td>
-<td>0.0038</td>
-<td>0.2056</td>
-</tr>
-<tr class="even">
-<td>Заместитель Председателя Правительства Российской Федерации</td>
-<td>position</td>
-<td>4</td>
-<td>0.0142</td>
-<td>0.0038</td>
-<td>0.2056</td>
-</tr>
-</tbody>
-</table>
-<h2 id="подграф-formal-core">Подграф formal core</h2>
-<figure>
-<img src="../outputs/figures/core_network_top40.png"
-alt="Подграф formal core" />
-<figcaption aria-hidden="true">Подграф formal core</figcaption>
-</figure>
-<p>Этот граф показывает наиболее связанные элементы формального ядра. Он
-полезен как опорная карта институционального устройства, но не должен
-автоматически отождествляться с «реальным распределением власти»: для
-этого и нужен аналитический слой.</p>
-<h1 id="интерпретация">Интерпретация</h1>
-<h2 id="основные-выводы">Основные выводы</h2>
-<ul>
-<li>Формальный слой <code>core</code> существенно менее плотный, чем
-слой <code>comention</code>, что ожидаемо: официальная институциональная
-структура задаёт более жёсткий и ограниченный набор связей.</li>
-<li>Наиболее центральным узлом formal core выступает институт
-президента, а среди связанных институциональных узлов заметны
-Правительство РФ, Госдума и Совет Федерации.</li>
-<li>Сравнение слоёв показывает, что формальная архитектура власти и
-аналитически реконструированная сеть не совпадают полностью: разные слои
-фиксируют разные механизмы связанности.</li>
-<li>Даже ограниченный автоматизированный сбор официального слоя улучшает
-воспроизводимость проекта и делает институциональную часть менее
-зависимой от ручного ввода.</li>
-</ul>
-<h1 id="ограничения">Ограничения</h1>
-<ul>
-<li>Автоматизированный сбор официальных данных пока охватывает только
-часть институционального слоя.</li>
-<li>Слои <code>overlay</code> и <code>comention</code> не являются
-полностью verified-only и должны интерпретироваться как аналитическая
-реконструкция.</li>
-<li>Значения центральности зависят от того, какие типы рёбер включены в
-formal core.</li>
-<li>Первоначальная структура части данных была совместима с Kumu, но
-финальный анализ выполнен собственным Python-кодом.</li>
-</ul>
-<h1 id="воспроизводимость">Воспроизводимость</h1>
-<h2 id="структура-репозитория">Структура репозитория</h2>
-<ul>
-<li><code>src/</code> — код загрузки, построения графов, расчёта метрик,
-визуализации и автосбора;</li>
-<li><code>scripts/</code> — сценарий полного запуска;</li>
-<li><code>data/raw/</code> — исходные CSV;</li>
-<li><code>data/processed/</code> — очищенные таблицы;</li>
-<li><code>outputs/</code> — таблицы результатов и готовые
-визуализации;</li>
-<li><code>report/</code> — Quarto-отчёт.</li>
-</ul>
-<h2 id="запуск">Запуск</h2>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-r</span> requirements.txt</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> scripts/run_analysis.py</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render report/index.qmd</span></code></pre></div>
-<h1 id="заключение">Заключение</h1>
-<p>Проект показывает, что корпус данных, изначально организованный для
-Kumu, можно превратить в воспроизводимый Python-пайплайн, который
-включает автоматизированный сбор официальных данных, сетевой анализ,
-сравнение слоёв сети и кодовые визуализации. Это делает результат более
-академически прозрачным и лучше соответствует требованиям итогового
-проекта.</p>
+<p>Для офлайн-воспроизводимости в репозитории хранится кэшированный
+snapshot официального слоя. Поэтому проект можно запустить и без
+live-доступа к сети, но логика автоматизированного сбора остаётся частью
+метода.</p>
+<div class="figure-card">
+<img src="../outputs/figures/official_collection_counts.png" alt="Сводка автоматизированного сбора официальных данных">
+<p class="figure-note">
+Автоматизированный сбор пока охватывает только часть институционального
+слоя, но уже делает проект менее зависимым от ручного ввода.
+</p>
+</div>
+<h2 id="методы">Методы</h2>
+<div class="method-grid">
+<div class="method-card">
+<pre><code>&lt;h3&gt;1. Автоматизированный сбор&lt;/h3&gt;
+&lt;p&gt;Сбор и структурирование формального институционального слоя с официальных сайтов, сохранение snapshot для воспроизводимости.&lt;/p&gt;</code></pre>
+</div>
+<div class="method-card">
+<pre><code>&lt;h3&gt;2. Сетевой анализ&lt;/h3&gt;
+&lt;p&gt;Построение графа formal core и расчёт degree, betweenness и closeness centrality с помощью &lt;code&gt;networkx&lt;/code&gt;.&lt;/p&gt;</code></pre>
+</div>
+<div class="method-card">
+<pre><code>&lt;h3&gt;3. Multilayer comparison&lt;/h3&gt;
+&lt;p&gt;Сравнение слоёв &lt;code&gt;official&lt;/code&gt;, &lt;code&gt;core&lt;/code&gt;, &lt;code&gt;overlay&lt;/code&gt; и &lt;code&gt;comention&lt;/code&gt; по размеру, составу и типам связей.&lt;/p&gt;</code></pre>
+</div>
+</div>
+<h2 id="results">Результаты</h2>
+<h3 id="слои-фиксируют-разные-типы-связанности">1. Слои фиксируют разные
+типы связанности</h3>
+<div class="figure-card">
+<img src="../outputs/figures/relations_by_layer.png" alt="Количество связей по слоям и типам">
+<p class="figure-note">
+Формальный слой <code>core</code> задаёт ограниченный институциональный
+каркас, тогда как <code>comention</code> значительно увеличивает сетевую
+плотность за счёт соупоминаний.
+</p>
+</div>
+<h3
+id="центральность-formal-core-концентрируется-вокруг-ограниченного-числа-узлов">2.
+Центральность formal core концентрируется вокруг ограниченного числа
+узлов</h3>
+<div class="figure-grid">
+<div class="figure-card half">
+<pre><code>&lt;img src=&quot;../outputs/figures/top15_core_degree.png&quot; alt=&quot;Топ-15 узлов formal core по degree centrality&quot;&gt;
+&lt;p class=&quot;figure-note&quot;&gt;На вершине formal core находятся президентский центр, правительство и парламентские институты.&lt;/p&gt;</code></pre>
+</div>
+<div class="figure-card half">
+<pre><code>&lt;img src=&quot;../outputs/figures/core_network_top40.png&quot; alt=&quot;Подграф наиболее связанных узлов formal core&quot;&gt;
+&lt;p class=&quot;figure-note&quot;&gt;Подграф показывает ядро институциональной связности, но не претендует на полное описание «реального» распределения власти.&lt;/p&gt;</code></pre>
+</div>
+</div>
+<h3 id="основные-выводы">Основные выводы</h3>
+<div class="findings-grid">
+<div class="finding-card">
+<pre><code>&lt;h4&gt;Формальный каркас уже уже аналитической сети&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;core&lt;/code&gt; значительно менее плотен, чем &lt;code&gt;comention&lt;/code&gt;, потому что фиксирует только институционально допустимые и явно размеченные связи.&lt;/p&gt;</code></pre>
+</div>
+<div class="finding-card">
+<pre><code>&lt;h4&gt;Президентский центр — главный структурный узел&lt;/h4&gt;
+&lt;p&gt;В formal core наибольшую центральность получает институт президента, а следом идут правительство и парламентские институты.&lt;/p&gt;</code></pre>
+</div>
+<div class="finding-card">
+<pre><code>&lt;h4&gt;Слои не совпадают друг с другом&lt;/h4&gt;
+&lt;p&gt;Формальная архитектура власти и аналитически реконструированная сеть описывают разные механизмы связанности и не могут быть сведены к одной плоскости.&lt;/p&gt;</code></pre>
+</div>
+<div class="finding-card">
+<pre><code>&lt;h4&gt;Автосбор усиливает воспроизводимость&lt;/h4&gt;
+&lt;p&gt;Даже ограниченный официальный snapshot делает институциональную часть проекта прозрачнее и лучше проверяемой.&lt;/p&gt;</code></pre>
+</div>
+</div>
+<h2 id="ограничения-и-перспективы">Ограничения и перспективы</h2>
+<div class="limit-grid">
+<div class="limit-card">
+<pre><code>&lt;h3&gt;Ограничения&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Автоматизированный сбор пока охватывает только часть формального институционального слоя.&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;overlay&lt;/code&gt; и &lt;code&gt;comention&lt;/code&gt; нельзя интерпретировать как fully verified-only данные.&lt;/li&gt;
+  &lt;li&gt;Сетевые метрики чувствительны к тому, какие типы рёбер включены в formal core.&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</div>
+<div class="limit-card">
+<pre><code>&lt;h3&gt;Перспективы развития&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Расширить автоматизированный сбор официальных данных.&lt;/li&gt;
+  &lt;li&gt;Добавить исторические срезы и динамику сети по годам.&lt;/li&gt;
+  &lt;li&gt;Углубить аналитический слой за счёт более строгой разметки кадровых и неформальных связей.&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</div>
+</div>
+<h2 id="воспроизводимость">Воспроизводимость</h2>
+<p>Проект опубликован в отдельном GitHub-репозитории и состоит из
+Jupyter-ноутбуков, Python-модулей, сырых и обработанных данных, а также
+статического отчёта Quarto. Это позволяет рассматривать его не как
+разовую визуализацию, а как небольшой воспроизводимый исследовательский
+pipeline.</p>
+<div class="sourceCode" id="cb20"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-r</span> requirements.txt</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> scripts/run_analysis.py</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render report/index.qmd</span></code></pre></div>
+<h2 id="заключение">Заключение</h2>
+<p>Проект показывает, что даже данные, первоначально подготовленные под
+Kumu, можно превратить в аккуратный и воспроизводимый Python-пайплайн. В
+таком виде результат лучше соответствует формату итогового DH-проекта: у
+него есть исследовательский вопрос, корпус данных, связь с предыдущими
+исследованиями, явная методика, воспроизводимый код и визуально
+считываемые результаты.</p>
 </body>
 </html>

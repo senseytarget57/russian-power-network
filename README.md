@@ -53,7 +53,7 @@ https://archive.org/details/politicalnetwork0000knok
 ## Данные
 
 
-[Ссылка на датасет]([url](https://drive.google.com/file/d/1ItibH1W4zBke4NnqLMiXigWZrNzuyGze/view?usp=sharing))
+[Ссылка на датасет]([https://drive.google.com/file/d/1ItibH1W4zBke4NnqLMiXigWZrNzuyGze/view?usp=sharing])
 
 ### 1. Формальный институциональный слой
 Проект включает **автоматизированный сбор с официальных сайтов**:

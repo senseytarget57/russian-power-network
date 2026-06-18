@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Арсений" />
+  <meta name="dcterms.date" content="2026-06-18" />
+  <title>�������������� ������������ �������������������� ������������</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../report/styles.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">�������������� ������������ ��������������������
+������������</h1>
+<p class="subtitle">Формальные институты, кадровые связи и аналитические
+слои влияния</p>
+<p class="author">Арсений</p>
+<p class="date">2026-06-18</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#аннотация" id="toc-аннотация">Аннотация</a></li>
+<li><a href="#исследовательский-вопрос"
+id="toc-исследовательский-вопрос">Исследовательский вопрос</a>
+<ul>
+<li><a href="#задачи" id="toc-задачи">Задачи</a></li>
+</ul></li>
+<li><a href="#данные" id="toc-данные">Данные</a>
+<ul>
+<li><a href="#сводка-корпуса" id="toc-сводка-корпуса">Сводка корпуса</a>
+<ul>
+<li><a href="#размер-слоев" id="toc-размер-слоев">Размер слоев</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#автоматизированный-сбор-данных"
+id="toc-автоматизированный-сбор-данных">Автоматизированный сбор
+данных</a>
+<ul>
+<li><a href="#что-собрано-автоматически"
+id="toc-что-собрано-автоматически">Что собрано автоматически</a></li>
+</ul></li>
+<li><a href="#методика" id="toc-методика">Методика</a>
+<ul>
+<li><a href="#использованные-цифровые-методы"
+id="toc-использованные-цифровые-методы">Использованные цифровые
+методы</a></li>
+<li><a href="#технический-пайплайн"
+id="toc-технический-пайплайн">Технический пайплайн</a></li>
+</ul></li>
+<li><a href="#результаты" id="toc-результаты">Результаты</a>
+<ul>
+<li><a href="#типы-связей-по-слоям" id="toc-типы-связей-по-слоям">Типы
+связей по слоям</a>
+<ul>
+<li><a href="#формальные-связи-в-core"
+id="toc-формальные-связи-в-core">Формальные связи в core</a></li>
+</ul></li>
+<li><a href="#центральные-узлы-formal-core"
+id="toc-центральные-узлы-formal-core">Центральные узлы formal core</a>
+<ul>
+<li><a href="#топ-узлов-по-centrality"
+id="toc-топ-узлов-по-centrality">Топ узлов по centrality</a></li>
+</ul></li>
+<li><a href="#подграф-formal-core" id="toc-подграф-formal-core">Подграф
+formal core</a></li>
+</ul></li>
+<li><a href="#интерпретация" id="toc-интерпретация">Интерпретация</a>
+<ul>
+<li><a href="#основные-выводы" id="toc-основные-выводы">Основные
+выводы</a></li>
+</ul></li>
+<li><a href="#ограничения" id="toc-ограничения">Ограничения</a></li>
+<li><a href="#воспроизводимость"
+id="toc-воспроизводимость">Воспроизводимость</a>
+<ul>
+<li><a href="#структура-репозитория"
+id="toc-структура-репозитория">Структура репозитория</a></li>
+<li><a href="#запуск" id="toc-запуск">Запуск</a></li>
+</ul></li>
+<li><a href="#заключение" id="toc-заключение">Заключение</a></li>
+</ul>
+</nav>
+<h1 id="аннотация">Аннотация</h1>
+<p>Этот проект переводит исходный корпус данных, первоначально
+организованный в Kumu-совместимых CSV, в воспроизводимый
+Python-пайплайн. Итоговый результат строится <strong>не в Kumu</strong>,
+а собственным кодом: данные загружаются, нормализуются, частично
+дополняются автоматизированным сбором с официальных сайтов, после чего
+на их основе строятся графы, считаются сетевые метрики и создаются
+визуализации.</p>
+<h1 id="исследовательский-вопрос">Исследовательский вопрос</h1>
+<p><strong>Насколько формальная структура российской власти совпадает с
+сетевой структурой кадровых, координационных и аналитически
+реконструируемых связей?</strong></p>
+<h2 id="задачи">Задачи</h2>
+<ol type="1">
+<li>Собрать и объединить формальный и аналитический слои данных о
+российской власти.</li>
+<li>Построить формальный институциональный граф и сравнить его с
+дополнительными слоями сети.</li>
+<li>Вычислить базовые сетевые метрики центральности для formal
+core.</li>
+<li>Визуализировать различия между слоями и показать ограничения такого
+моделирования.</li>
+</ol>
+<h1 id="данные">Данные</h1>
+<p>Проект использует четыре слоя данных:</p>
+<ul>
+<li><strong>official</strong> — формальный институциональный слой,
+собираемый кодом с официальных сайтов;</li>
+<li><strong>core</strong> — формальный институциональный каркас
+исследовательской базы;</li>
+<li><strong>overlay</strong> — аналитический слой на основе
+политологических исследований;</li>
+<li><strong>comention</strong> — слой соупоминаний, фиксирующий
+дополнительную связанность акторов.</li>
+</ul>
+<p>Изначальные Kumu-таблицы используются только как <strong>сырой формат
+хранения части данных</strong>. Финальный анализ, очистка, объединение,
+расчёт метрик и визуализация выполняются Python-кодом.</p>
+<h2 id="сводка-корпуса">Сводка корпуса</h2>
+<ul>
+<li>Всего узлов: <strong>522</strong></li>
+<li>Всего связей: <strong>1920</strong></li>
+<li>Узлов в слое <code>core</code>: <strong>282</strong></li>
+<li>Узлов в слое <code>overlay</code>: <strong>130</strong></li>
+<li>Узлов в слое <code>comention</code>: <strong>110</strong></li>
+<li>Связей в слое <code>core</code>: <strong>448</strong></li>
+<li>Связей в слое <code>overlay</code>: <strong>50</strong></li>
+<li>Связей в слое <code>comention</code>: <strong>1422</strong></li>
+</ul>
+<h3 id="размер-слоев">Размер слоев</h3>
+<table>
+<thead>
+<tr class="header">
+<th>layer</th>
+<th>edges</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>comention</td>
+<td>1422</td>
+</tr>
+<tr class="even">
+<td>core</td>
+<td>448</td>
+</tr>
+<tr class="odd">
+<td>overlay</td>
+<td>50</td>
+</tr>
+</tbody>
+</table>
+<h1 id="автоматизированный-сбор-данных">Автоматизированный сбор
+данных</h1>
+<p>В проект включён отдельный модуль
+<code>src/scrape_official.py</code>, который пытается автоматически
+собрать часть формального институционального слоя с официальных сайтов.
+На текущем этапе он ориентирован на страницы:</p>
+<ul>
+<li>Кремля;</li>
+<li>Правительства РФ;</li>
+<li>Государственной Думы;</li>
+<li>Совета Федерации.</li>
+</ul>
+<p>Для воспроизводимости в офлайн-среде в репозитории хранится
+кэшированный snapshot официального слоя. Это означает, что даже без
+доступа к сети можно воспроизвести структуру проекта и показать
+отдельный этап <strong>автоматизированного сбора данных</strong>.</p>
+<figure>
+<img src="../outputs/figures/official_collection_counts.png"
+alt="Результаты автоматизированного сбора официальных данных" />
+<figcaption aria-hidden="true">Результаты автоматизированного сбора
+официальных данных</figcaption>
+</figure>
+<h3 id="что-собрано-автоматически">Что собрано автоматически</h3>
+<table>
+<thead>
+<tr class="header">
+<th>provider</th>
+<th>entity_group</th>
+<th>count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>council</td>
+<td>institution</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>council</td>
+<td>person</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>council</td>
+<td>position</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>duma</td>
+<td>institution</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>duma</td>
+<td>person</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>duma</td>
+<td>position</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>government</td>
+<td>person</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>government</td>
+<td>position</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>kremlin</td>
+<td>institution</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>kremlin</td>
+<td>person</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>kremlin</td>
+<td>position</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>other_official</td>
+<td>institution</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h1 id="методика">Методика</h1>
+<h2 id="использованные-цифровые-методы">Использованные цифровые
+методы</h2>
+<ol type="1">
+<li><strong>Автоматизированный сбор и структурирование официальных
+данных</strong> с официальных сайтов государственных институтов.</li>
+<li><strong>Сетевой анализ</strong> формального институционального графа
+(<code>networkx</code>): degree centrality, betweenness centrality,
+closeness centrality.</li>
+<li><strong>Сравнительный анализ многослойной сети</strong>:
+сопоставление <code>official</code>, <code>core</code>,
+<code>overlay</code> и <code>comention</code> по размеру, типам связей и
+плотности.</li>
+</ol>
+<h2 id="технический-пайплайн">Технический пайплайн</h2>
+<ol type="1">
+<li>Загрузка сырых CSV из <code>data/raw/</code>.</li>
+<li>Нормализация и объединение узлов и связей в
+<code>data/processed/</code>.</li>
+<li>Построение formal core графа по основным формальным связям.</li>
+<li>Расчёт центральностей и генерация таблиц результатов.</li>
+<li>Построение статических визуализаций Python-кодом.</li>
+</ol>
+<h1 id="результаты">Результаты</h1>
+<h2 id="типы-связей-по-слоям">Типы связей по слоям</h2>
+<figure>
+<img src="../outputs/figures/relations_by_layer.png"
+alt="Типы связей по слоям" />
+<figcaption aria-hidden="true">Типы связей по слоям</figcaption>
+</figure>
+<p>Диаграмма показывает, что разные слои описывают разные типы
+связанности. Слой <code>core</code> отвечает за формальный каркас,
+<code>overlay</code> — за аналитически реконструированные связи, а
+<code>comention</code> — за плотность совместной видимости акторов в
+источниках.</p>
+<h3 id="формальные-связи-в-core">Формальные связи в core</h3>
+<table>
+<thead>
+<tr class="header">
+<th>type</th>
+<th>count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>contains</td>
+<td>126</td>
+</tr>
+<tr class="even">
+<td>занимает_должность</td>
+<td>102</td>
+</tr>
+<tr class="odd">
+<td>контроль_надзор</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td>координация</td>
+<td>8</td>
+</tr>
+<tr class="odd">
+<td>назначение</td>
+<td>118</td>
+</tr>
+<tr class="even">
+<td>неформальное_отношение</td>
+<td>12</td>
+</tr>
+<tr class="odd">
+<td>подчинение</td>
+<td>75</td>
+</tr>
+</tbody>
+</table>
+<h2 id="центральные-узлы-formal-core">Центральные узлы formal core</h2>
+<figure>
+<img src="../outputs/figures/top15_core_degree.png"
+alt="Топ-15 узлов по degree centrality в formal core" />
+<figcaption aria-hidden="true">Топ-15 узлов по degree centrality в
+formal core</figcaption>
+</figure>
+<p>Наиболее центральным узлом formal core выступает <strong>институт
+президента</strong>, что соответствует общей логике формального
+институционального каркаса. Далее идут узлы правительства и
+парламентских институтов.</p>
+<h3 id="топ-узлов-по-centrality">Топ узлов по centrality</h3>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>узел</th>
+<th>тип</th>
+<th>degree</th>
+<th>degree_centrality</th>
+<th>betweenness</th>
+<th>closeness</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Институт Президента Российской Федерации</td>
+<td>organization</td>
+<td>65</td>
+<td>0.2313</td>
+<td>0.2380</td>
+<td>0.3286</td>
+</tr>
+<tr class="even">
+<td>Председатель Правительства Российской Федерации</td>
+<td>position</td>
+<td>27</td>
+<td>0.0961</td>
+<td>0.0142</td>
+<td>0.2352</td>
+</tr>
+<tr class="odd">
+<td>Государственная Дума Федерального Собрания Российской Федерации</td>
+<td>organization</td>
+<td>24</td>
+<td>0.0854</td>
+<td>0.0090</td>
+<td>0.1809</td>
+</tr>
+<tr class="even">
+<td>Правительство Российской Федерации</td>
+<td>organization</td>
+<td>19</td>
+<td>0.0676</td>
+<td>0.0628</td>
+<td>0.2249</td>
+</tr>
+<tr class="odd">
+<td>Совет Федерации Федерального Собрания Российской Федерации</td>
+<td>organization</td>
+<td>12</td>
+<td>0.0427</td>
+<td>0.0036</td>
+<td>0.1626</td>
+</tr>
+<tr class="even">
+<td>Федеральная служба безопасности Российской Федерации</td>
+<td>organization</td>
+<td>7</td>
+<td>0.0249</td>
+<td>0.0219</td>
+<td>0.2090</td>
+</tr>
+<tr class="odd">
+<td>Заместитель Председателя Правительства Российской Федерации</td>
+<td>position</td>
+<td>4</td>
+<td>0.0142</td>
+<td>0.0038</td>
+<td>0.2056</td>
+</tr>
+<tr class="even">
+<td>Заместитель Председателя Правительства Российской Федерации</td>
+<td>position</td>
+<td>4</td>
+<td>0.0142</td>
+<td>0.0038</td>
+<td>0.2056</td>
+</tr>
+</tbody>
+</table>
+<h2 id="подграф-formal-core">Подграф formal core</h2>
+<figure>
+<img src="../outputs/figures/core_network_top40.png"
+alt="Подграф formal core" />
+<figcaption aria-hidden="true">Подграф formal core</figcaption>
+</figure>
+<p>Этот граф показывает наиболее связанные элементы формального ядра. Он
+полезен как опорная карта институционального устройства, но не должен
+автоматически отождествляться с «реальным распределением власти»: для
+этого и нужен аналитический слой.</p>
+<h1 id="интерпретация">Интерпретация</h1>
+<h2 id="основные-выводы">Основные выводы</h2>
+<ul>
+<li>Формальный слой <code>core</code> существенно менее плотный, чем
+слой <code>comention</code>, что ожидаемо: официальная институциональная
+структура задаёт более жёсткий и ограниченный набор связей.</li>
+<li>Наиболее центральным узлом formal core выступает институт
+президента, а среди связанных институциональных узлов заметны
+Правительство РФ, Госдума и Совет Федерации.</li>
+<li>Сравнение слоёв показывает, что формальная архитектура власти и
+аналитически реконструированная сеть не совпадают полностью: разные слои
+фиксируют разные механизмы связанности.</li>
+<li>Даже ограниченный автоматизированный сбор официального слоя улучшает
+воспроизводимость проекта и делает институциональную часть менее
+зависимой от ручного ввода.</li>
+</ul>
+<h1 id="ограничения">Ограничения</h1>
+<ul>
+<li>Автоматизированный сбор официальных данных пока охватывает только
+часть институционального слоя.</li>
+<li>Слои <code>overlay</code> и <code>comention</code> не являются
+полностью verified-only и должны интерпретироваться как аналитическая
+реконструкция.</li>
+<li>Значения центральности зависят от того, какие типы рёбер включены в
+formal core.</li>
+<li>Первоначальная структура части данных была совместима с Kumu, но
+финальный анализ выполнен собственным Python-кодом.</li>
+</ul>
+<h1 id="воспроизводимость">Воспроизводимость</h1>
+<h2 id="структура-репозитория">Структура репозитория</h2>
+<ul>
+<li><code>src/</code> — код загрузки, построения графов, расчёта метрик,
+визуализации и автосбора;</li>
+<li><code>scripts/</code> — сценарий полного запуска;</li>
+<li><code>data/raw/</code> — исходные CSV;</li>
+<li><code>data/processed/</code> — очищенные таблицы;</li>
+<li><code>outputs/</code> — таблицы результатов и готовые
+визуализации;</li>
+<li><code>report/</code> — Quarto-отчёт.</li>
+</ul>
+<h2 id="запуск">Запуск</h2>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-r</span> requirements.txt</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> scripts/run_analysis.py</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render report/index.qmd</span></code></pre></div>
+<h1 id="заключение">Заключение</h1>
+<p>Проект показывает, что корпус данных, изначально организованный для
+Kumu, можно превратить в воспроизводимый Python-пайплайн, который
+включает автоматизированный сбор официальных данных, сетевой анализ,
+сравнение слоёв сети и кодовые визуализации. Это делает результат более
+академически прозрачным и лучше соответствует требованиям итогового
+проекта.</p>
+</body>
+</html>
